@@ -292,7 +292,7 @@ def post_config(opt):
         opt.alpha = 100
     elif opt.mode == 'animation':
         opt.num_samples = 1
-    elif:
+    else:
         opt.num_samples = opt.num_samples
 
     if opt.manualSeed is None:
