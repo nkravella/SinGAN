@@ -290,7 +290,10 @@ def post_config(opt):
     opt.out_ = 'TrainedModels/%s/scale_factor=%f/' % (opt.input_name[:-4], opt.scale_factor)
     if opt.mode == 'SR':
         opt.alpha = 100
-    opt.num_samples = opt.num_samples
+    if opt.mode == 'animation':
+        opt.num_samples = 1
+    elif:
+        opt.num_samples = opt.num_samples
 
     if opt.manualSeed is None:
         opt.manualSeed = random.randint(1, 10000)
