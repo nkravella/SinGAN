@@ -43,7 +43,5 @@ if __name__ == '__main__':
             for b in range(80, 100, 5):
                 #opt.animation_start_scale = start_scale
                 #opt.beta_animation = b / 100
-                if opt.output_type == 'gif':
-                    generate_gif(Gs, Zs, reals, NoiseAmp, opt, beta=b/100, start_scale=start_scale)
-                else:
-                    generate_video(Gs, Zs, reals, NoiseAmp, opt, beta=b/100, start_scale=start_scale)
+                generate_gif(Gs, Zs, reals, NoiseAmp, opt, beta=b/100, start_scale=start_scale, output_type=opt.output_type)
+                

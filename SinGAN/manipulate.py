@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 from SinGAN.training import *
 from config import get_arguments
 
-def generate_gif(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=10):
+def generate_gif(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=10,output_type = 'video'):
 
     in_s = torch.full(Zs[0].shape, 0, device=opt.device)
     images_cur = []
@@ -84,7 +84,13 @@ def generate_gif(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=1
         os.makedirs('%s/start_scale=%d' % (dir2save,start_scale) )
     except OSError:
         pass
-    imageio.mimsave('%s/start_scale=%d/alpha=%f_beta=%f.gif' % (dir2save,start_scale,alpha,beta),images_cur,fps=fps)
+    if output_type=='video':
+        writer = imageio.get_writer('%s/start_scale=%d/alpha=%f_beta=%f.mp4' % (dir2save,start_scale,alpha,beta), fps=fps)
+        for im in images_cur:
+            writer.append_data(imageio.imread(im))
+        writer.close()
+    else:
+        imageio.mimsave('%s/start_scale=%d/alpha=%f_beta=%f.gif' % (dir2save,start_scale,alpha,beta),images_cur,fps=fps)
     del images_cur
 
 def generate_video(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=10):
@@ -155,7 +161,7 @@ def generate_video(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps
                 os.makedirs('%s/start_scale=%d/alpha=%f_beta=%f/' % (dir2save,start_scale) )
             except OSError:
                 pass
-            writer = imageio.get_writer('%s/start_scale=%d/alpha=%f_beta=%f/%04d.mp4' % (dir2save,start_scale,alpha,beta,count), fps=10)
+            writer = imageio.get_writer('%s/start_scale=%d/alpha=%f_beta=%f/%04d.mp4' % (dir2save,start_scale,alpha,beta), fps=10)
             for im in images_cur:
                 writer.append_data(imageio.imread(im))
             writer.close()
