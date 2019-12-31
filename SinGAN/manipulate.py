@@ -85,7 +85,7 @@ def generate_gif(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=1
     except OSError:
         pass
     if output_type=='video':
-        writer = imageio.get_writer('%s/start_scale=%d/alpha=%f_beta=%f.mp4' % (dir2save,start_scale,alpha,beta), fps=fps)
+        writer = imageio.get_writer('%s/start_scale=%d/alpha=%f_beta=%f.mp4' % (dir2save,start_scale,alpha,beta), quality=10, fps=fps)
         for im in images_cur:
             writer.append_data(im)
         writer.close()
