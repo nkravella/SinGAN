@@ -151,7 +151,11 @@ def generate_video(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps
             print(I_curr.shape)
             images_cur.append(I_curr)
 
-            writer = imageio.get_writer('%s/start_scale=%d/alpha=%f_beta=%f_frames/_%04d.png' % (dir2save,start_scale,alpha,beta,count), fps=10)
+            try:
+                os.makedirs('%s/start_scale=%d/alpha=%f_beta=%f/' % (dir2save,start_scale) )
+            except OSError:
+                pass
+            writer = imageio.get_writer('%s/start_scale=%d/alpha=%f_beta=%f/%04d.mp4' % (dir2save,start_scale,alpha,beta,count), fps=10)
             for im in images_cur:
                 writer.append_data(imageio.imread(im))
             writer.close()
