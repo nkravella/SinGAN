@@ -150,7 +150,7 @@ def generate_video(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps
 
             images_cur.append(I_curr)
             img = Image.fromarray(np.asarray(I_curr.cpu()), 'RGB')
-            img.save('%s/start_scale=%d/alpha=%f_beta=%f_%04d.png' % (dir2save,start_scale,alpha,beta,count))
+            img.save('%s/start_scale=%d/alpha=%f_beta=%f_frames/_%04d.png' % (dir2save,start_scale,alpha,beta,count))
         count += 1
     del images_cur
 
