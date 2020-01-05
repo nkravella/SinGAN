@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 from SinGAN.training import *
 from config import get_arguments
 
-def generate_gif(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=10,output_type = 'video'):
+def generate_gif(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=10,output_type='video',num_frames=100):
 
     in_s = torch.full(Zs[0].shape, 0, device=opt.device)
     images_cur = []
@@ -45,7 +45,7 @@ def generate_gif(Gs,Zs,reals,NoiseAmp,opt,alpha=0.1,beta=0.9,start_scale=2,fps=1
             z_prev1 = 0.95*Z_opt +0.05*functions.generate_noise([opt.nc_z,nzx,nzy], device=opt.device)
             z_prev2 = Z_opt
 
-        for i in range(0,100,1):
+        for i in range(0,num_frames,1):
             if count == 0:
                 z_rand = functions.generate_noise([1,nzx,nzy], device=opt.device)
                 z_rand = z_rand.expand(1,3,Z_opt.shape[2],Z_opt.shape[3])
