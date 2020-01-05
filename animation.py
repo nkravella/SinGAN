@@ -14,6 +14,7 @@ if __name__ == '__main__':
     parser.add_argument('--input_name', help='input image name', required=True)
     parser.add_argument('--mode', help='task to be done', default='animation')
     parser.add_argument('--output_type', help='video or gif', default='video')
+    parser.add_argument('--num_frames', help='number of frames', default=100)
     opt = parser.parse_args()
     opt = functions.post_config(opt)
     Gs = []
@@ -43,5 +44,5 @@ if __name__ == '__main__':
             for b in range(80, 100, 5):
                 #opt.animation_start_scale = start_scale
                 #opt.beta_animation = b / 100
-                generate_gif(Gs, Zs, reals, NoiseAmp, opt, beta=b/100, start_scale=start_scale, output_type=opt.output_type)
+                generate_gif(Gs, Zs, reals, NoiseAmp, opt, beta=b/100, start_scale=start_scale, output_type=opt.output_type,num_frames=opt.num_frames)
                 
