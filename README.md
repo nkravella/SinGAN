@@ -1,7 +1,7 @@
 # SinGAN
-[Project](http://webee.technion.ac.il/people/tomermic/SinGAN/SinGAN.htm) | [Arxiv](https://arxiv.org/pdf/1905.01164.pdf) | [CVF](http://openaccess.thecvf.com/content_ICCV_2019/papers/Shaham_SinGAN_Learning_a_Generative_Model_From_a_Single_Natural_Image_ICCV_2019_paper.pdf) 
-### Official pytorch implementation of the paper: "SinGAN: Learning a Generative Model from a Single Natural Image"
-####  ICCV 2019
+
+[Project](https://tamarott.github.io/SinGAN.htm) | [Arxiv](https://arxiv.org/pdf/1905.01164.pdf) | [CVF](http://openaccess.thecvf.com/content_ICCV_2019/papers/Shaham_SinGAN_Learning_a_Generative_Model_From_a_Single_Natural_Image_ICCV_2019_paper.pdf) 
+### Official pytorch implementation of the paper: "SinGAN: Learning a Generative Model from a Single Natural Image", ICCV 2019 Best paper award (Marr prize)
 
 
 ## Random samples from a *single* image
@@ -123,21 +123,21 @@ SinGAN's results on BSD100 dataset can be download from the 'Downloads' folder.
 ### Single Image Fréchet Inception Distance (SIFID score)
 To calculate the SIFID between real images and their corresponding fake samples, please run:
 ```
-python SIFID/sifid_score.py --path2real <real images path> --path2fake <fake images path> --images_suffix <e.g. jpg, png>
+python SIFID/sifid_score.py --path2real <real images path> --path2fake <fake images path> 
 ```  
-Make sure that each of the fake images file name is identical to its cooresponding real image file name. 
+Make sure that each of the fake images file name is identical to its cooresponding real image file name. Images should be saved in `.jpg` format.
 
 ### Super Resolution Results
 SinGAN's SR results on BSD100 dataset can be download from the 'Downloads' folder.
 
 ### User Study
-The data used for the user study can be found in the 'Downloads' folder. 
+The data used for the user study can be found in the Downloads folder. 
 
-'real' folder: 50 real images, randomly picked from the [places databas](http://places.csail.mit.edu/)
+real folder: 50 real images, randomly picked from the [places databas](http://places.csail.mit.edu/)
 
-'fake_high_variance' folder: random samples starting from n=N for each of the real images 
+fake_high_variance folder: random samples starting from n=N for each of the real images 
 
-'fake_mid_variance' folder: random samples starting from n=N-1 for each of the real images 
+fake_mid_variance folder: random samples starting from n=N-1 for each of the real images 
 
 For additional details please see section 3.1 in our [paper](https://arxiv.org/pdf/1905.01164.pdf)
 
